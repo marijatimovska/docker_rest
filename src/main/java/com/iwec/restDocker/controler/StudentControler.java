@@ -30,14 +30,14 @@ public class StudentControler {
 	// GET method to fetch all phones
 	//@GetMapping("/students")
 	@RequestMapping(value = "/students", method= RequestMethod.GET)
-	public List<Student> getAllPhones() {
+	public List<Student> getAllStudents() {
 		return studentRepository.findAll();
 	}
 
 	// GET method to fetch phone by Id
 	//@GetMapping("/students/{id}")
 	@RequestMapping(value = "/students/{id}", method= RequestMethod.GET)
-	public ResponseEntity<Student> getPhoneById(@PathVariable(value = "id") Integer id) throws Exception {
+	public ResponseEntity<Student> getStudentById(@PathVariable(value = "id") Integer id) throws Exception {
 		Student student = studentRepository.findById(id)
 				.orElseThrow(() -> new Exception("Student " + id + " not found"));
 		return ResponseEntity.ok().body(student);
@@ -65,7 +65,7 @@ public class StudentControler {
 
 	// DELETE method to delete a phone
 	@DeleteMapping("/student/{id}")
-	public Map<String, Boolean> deletePhone(@PathVariable(value = "id") Integer id) throws Exception {
+	public Map<String, Boolean> deleteStudent(@PathVariable(value = "id") Integer id) throws Exception {
 		Student student = studentRepository.findById(id)
 				.orElseThrow(() -> new Exception("Student " + id + " not found"));
 
