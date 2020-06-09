@@ -21,20 +21,20 @@ import com.iwec.restDocker.entity.Student;
 import com.iwec.restDocker.repository.StudentRepository;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/v1")
 public class StudentControler {
 
 	@Autowired
 	private StudentRepository studentRepository;
 
-	// GET method to fetch all phones
+	// GET method to fetch all students
 	//@GetMapping("/students")
 	@RequestMapping(value = "/students", method= RequestMethod.GET)
 	public List<Student> getAllStudents() {
 		return studentRepository.findAll();
 	}
 
-	// GET method to fetch phone by Id
+	// GET method to fetch student by Id
 	//@GetMapping("/students/{id}")
 	@RequestMapping(value = "/students/{id}", method= RequestMethod.GET)
 	public ResponseEntity<Student> getStudentById(@PathVariable(value = "id") Integer id) throws Exception {
@@ -43,13 +43,13 @@ public class StudentControler {
 		return ResponseEntity.ok().body(student);
 	}
 
-	// POST method to create a phone
+	// POST method to create a student
 	@PostMapping("/students")
 	public Student createStudent(@Valid @RequestBody Student student) {
 		return studentRepository.save(student);
 	}
 
-	// PUT method to update a phone's details
+	// PUT method to update a students's details
 	@PutMapping("/students/{id}")
 	public ResponseEntity<Student> updateStudent(@PathVariable(value = "id") Integer id,
 			@Valid @RequestBody Student studentDetails) throws Exception {
@@ -63,7 +63,7 @@ public class StudentControler {
 		return ResponseEntity.ok(updatedStudent);
 	}
 
-	// DELETE method to delete a phone
+	// DELETE method to delete a student
 	@DeleteMapping("/student/{id}")
 	public Map<String, Boolean> deleteStudent(@PathVariable(value = "id") Integer id) throws Exception {
 		Student student = studentRepository.findById(id)
@@ -74,4 +74,5 @@ public class StudentControler {
 		response.put("deleted", Boolean.TRUE);
 		return response;
 	}
+
 }
