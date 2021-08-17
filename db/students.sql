@@ -5,4 +5,5 @@ create table students (
  );
  
 insert into students (first_name, last_name) values ('Marija', 'Timovska');
-insert into students (first_name, last_name) values ('Petar', 'Popovski');
+insert into students (first_name, last_name) values ('Blagoj', 'Jovanovski');
+insert into students (first_name, last_name) values ('Anastasija', 'Ziso');
